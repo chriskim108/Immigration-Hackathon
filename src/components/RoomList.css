@@ -1,0 +1,54 @@
+body{
+  font-family: sans-serif;
+}
+.wrapper{
+  border-right: 1px solid black;
+  min-height: 100vh;
+}
+
+.header{
+  text-align: center;
+  background-color:#0665F3;
+  color:white;
+  padding-bottom: 10px
+}
+
+.scroll{
+  height: 82vh;
+  overflow-y: auto;
+}
+
+p{
+  color:white;
+  padding-bottom: 20px;
+}
+
+.rooms{
+  text-align: center;
+
+}
+
+.rooms:hover{
+  color: black;
+}
+
+.rooms:nth-child(even){
+  background-color: #1717BB
+}
+
+.rooms:nth-child(odd){
+  background-color: #1747BB
+}
+
+
+button{
+  width: 50%;
+  height: 30px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+
+.form{
+  text-align: center;
+}

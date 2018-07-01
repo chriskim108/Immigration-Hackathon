@@ -7,6 +7,11 @@
   display:grid;
   grid-template-columns: 1fr 3fr;
   height: 100vh;
+  /* margin:10px 60px 0px 60px; */
+  /* margin: 5px; */
+  border: 1px solid black;
+  /* border-radius: 5px; */
+
 }
 
 #App_messages {

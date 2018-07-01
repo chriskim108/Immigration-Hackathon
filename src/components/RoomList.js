@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './RoomList.css';
 
 class RoomList extends Component{
     constructor(props){
@@ -37,10 +38,10 @@ class RoomList extends Component{
     createRoom(e){
         e.preventDefault();
         // Retriving the values from the input tag
-        let newRoom = this.refs.nameOfRoom.value; 
-        
+        let newRoom = this.refs.nameOfRoom.value;
+
         // Pushing it to FireBase
-        this.roomsRef.push({ 
+        this.roomsRef.push({
             name: newRoom
         });
     }
@@ -53,43 +54,48 @@ class RoomList extends Component{
         let remainRooms = this.state.rooms.filter(room => room.key !== roomId);
         this.setState({ rooms: remainRooms});
     }
-    
+
     render(){
         return(
-            <div>
-                
-                <h1>Created Rooms</h1>
+            <div className = "wrapper">
+
+                <h1 className="header">Chat Rooms</h1>
+                <div className = "scroll">
                 {
-                    this.state.rooms.map( (data, index) => 
+                    this.state.rooms.map( (data, index) =>
+                      <div className = "rooms">
                         <div onClick={ ()=>this.props.activeRoomSelected(data.key) }
                              key={index} >
-                            
+                      </div>
+
                             <p>
                                 {data.name}
                             </p>
 
                             <button onClick={() => this.deleteRoom(data.key)}>
-                                Remove Room
+                                Delete Room
                             </button>
                         </div>
-                    ) 
-                }
 
-                
-                <form onSubmit={ this.createRoom.bind(this) } >
-                    <label className="newRoomLabel">Create a new room</label>
-                    
+                    )
+                  }
+                </div>
+
+
+
+                <form className="form" onSubmit={ this.createRoom.bind(this) } >
+
                     <br/>
 
-                    <input 
-                        type="text" 
-                        ref="nameOfRoom" 
+                    <input
+                        type="text"
+                        ref="nameOfRoom"
                         placeholder="Create a new room"
                         className="newRoomInput"/>
 
-                    <input 
-                        type="submit" 
-                        value="Create Room" 
+                    <input
+                        type="submit"
+                        value="Create Room"
                         className="newRoomSubmit"/>
                 </form>
 

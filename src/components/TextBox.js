@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './TextBox.css'
 
 class TextBox extends Component{
     constructor(props){
@@ -7,7 +8,7 @@ class TextBox extends Component{
         this.state = {
             messages:[]
         }
-    
+
         this.messageRef = this.props.firebase.database().ref('messages');
     }
 
@@ -23,19 +24,19 @@ class TextBox extends Component{
         e.preventDefault();
         // Retriving the values from the input tag
         let newContent = this.refs.messageOfRoom.value;
-        let newRoomId = this.props.activeRoom;        
-        let newSentAt = this.props.firebase.database.ServerValue.TIMESTAMP; 
-        let newUser = this.props.userInformation ? this.props.userInformation.displayName : "Guest";        
+        let newRoomId = this.props.activeRoom;
+        let newSentAt = this.props.firebase.database.ServerValue.TIMESTAMP;
+        let newUser = this.props.userInformation ? this.props.userInformation.displayName : "Guest";
 
         // Pushing it to FireBase
-        this.messageRef.push({ 
+        this.messageRef.push({
             content:newContent,
             roomId:newRoomId,
             sentAt:newSentAt,
             username:newUser
         });
-        
-        console.log("NEW USER HERE: " + newUser);        
+
+        console.log("NEW USER HERE: " + newUser);
     }
 
     deleteMessage(messageId) {
@@ -49,21 +50,22 @@ class TextBox extends Component{
         console.log("Filtered " + this.state.messages.length + " messages down to " + filteredMessages.length + " active messages.");
 
         return(
-            <div>                
-                {/* Form to input messages */}
-                <form onSubmit={ this.createMessage.bind(this) } >
-                    {/* <label className="newMessageLabel">Create a new message</label> */}
-                    
-                    <br/>
+            <div className ="form">
+                <form onSubmit={ this.createMessage.bind(this) } id="textForm">
 
-                    <input 
-                        type="text" 
-                        ref="messageOfRoom" 
+                    <br/>
+                    <input
+                        className="send"
+                        type="submit"
+                        value="Send Message"/>
+
+                    <input
+                        id="inputText"
+                        type="text"
+                        ref="messageOfRoom"
                         placeholder="Enter Message"/>
 
-                    <input 
-                        type="submit" 
-                        value="Send Message"/>
+
                 </form>
             </div>
         )

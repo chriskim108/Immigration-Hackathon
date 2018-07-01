@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './MessageList.css'
 
 class MessageList extends Component{
     constructor(props){
@@ -7,7 +8,7 @@ class MessageList extends Component{
         this.state = {
             messages:[]
         }
-    
+
         this.messageRef = this.props.firebase.database().ref('messages');
     }
 
@@ -23,19 +24,19 @@ class MessageList extends Component{
         e.preventDefault();
         // Retriving the values from the input tag
         let newContent = this.refs.messageOfRoom.value;
-        let newRoomId = this.props.activeRoom;        
-        let newSentAt = this.props.firebase.database.ServerValue.TIMESTAMP; 
-        let newUser = this.props.userInformation ? this.props.userInformation.displayName : "Guest";        
+        let newRoomId = this.props.activeRoom;
+        let newSentAt = this.props.firebase.database.ServerValue.TIMESTAMP;
+        let newUser = this.props.userInformation ? this.props.userInformation.displayName : "Guest";
 
         // Pushing it to FireBase
-        this.messageRef.push({ 
+        this.messageRef.push({
             content:newContent,
             roomId:newRoomId,
             sentAt:newSentAt,
             username:newUser
         });
-        
-        console.log("NEW USER HERE: " + newUser);        
+
+        console.log("NEW USER HERE: " + newUser);
     }
 
     deleteMessage(messageId) {
@@ -51,26 +52,23 @@ class MessageList extends Component{
         return(
             <div>
 
-                <h1>Created Messages</h1>
+                <h1 className="headerOne">Messages</h1>
+                <div className="allMessages">
                 {
-                    filteredMessages.map( (data, index) => 
-                        <div key={index}>
-                            <h1>{data.content}</h1>    
+
+                    filteredMessages.map( (data, index) =>
+                        <div className="messageBox" key={index}>
+                            <span className="messages">{data.content}</span>
 
                             <br/>
-                        
-                            <em>
-                                <strong>
-                                    {data.username}                             
-                                </strong>
-                            </em>
 
-                            {/* <button onClick={() => this.deleteMessage(data.key)}>
+                            {<button onClick={() => this.deleteMessage(data.key)}>
                                 Remove Message
-                            </button> */}
+                            </button> }
                         </div>
-                    ) 
+                    )
                 }
+                </div>
             </div>
         )
     }

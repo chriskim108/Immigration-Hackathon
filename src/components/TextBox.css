@@ -1,0 +1,17 @@
+.form{
+  border-top:1px solid black;
+
+}
+
+#inputText {
+  width:100%;
+  height: 7.5vh;;
+  border: 0px;
+  outline: none;
+  font-size: 1.5em;
+}
+
+#textForm {
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+}

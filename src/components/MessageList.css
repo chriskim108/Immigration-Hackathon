@@ -1,0 +1,25 @@
+.headerOne{
+  text-align: center;
+  border-bottom: 1px solid black;
+  padding-bottom:10px;
+  background-color: #0555F3;
+  color:white;
+}
+
+.messages{
+  margin-left: 10px;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px #888888;
+  border-radius: 5px;
+  padding: 10px;
+
+}
+
+.messageBox{
+    margin-top:40px;
+}
+
+.allMessages{
+  height: 82vh;
+  overflow-y: auto;
+}
