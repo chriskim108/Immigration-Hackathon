@@ -3,6 +3,7 @@ import RoomList from "./components/RoomList";
 import MessageList from "./components/MessageList";
 // import User from "./components/User";
 import TextBox from "./components/TextBox";
+import config from "./firebase.config";
 import './App.css';
 import * as firebase from 'firebase';
 
@@ -71,14 +72,7 @@ class App extends Component {
 }
 
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyAMdnxm_WQ8qv-IvXoRUz-SfKC0T8A-siI",
-  authDomain: "wihelp-f5681.firebaseapp.com",
-  databaseURL: "https://wihelp-f5681.firebaseio.com",
-  projectId: "wihelp-f5681",
-  storageBucket: "wihelp-f5681.appspot.com",
-  messagingSenderId: "545540919875"
-};
+
 firebase.initializeApp(config);
 
 export default App;
