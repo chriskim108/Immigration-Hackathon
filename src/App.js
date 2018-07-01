@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import RoomList from "./components/RoomList";
 import MessageList from "./components/MessageList";
-import User from "./components/User";
+// import User from "./components/User";
+import TextBox from "./components/TextBox";
 import './App.css';
 import * as firebase from 'firebase';
 
@@ -32,23 +33,38 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
-      <RoomList 
-      firebase={firebase}
-      activeRoom={this.state.activeRoom} 
-      activeRoomSelected={this.activeRoomSelected.bind(this)} />
-      
-      <MessageList
-      firebase={firebase}
-      activeRoom={this.state.activeRoom} 
-      activeRoomSelected={this.activeRoomSelected.bind(this)}
-      userInformation={this.state.userInformation}
-      setUser={this.setUser.bind(this)}/>
-      
-      <User 
-      firebase={firebase}
-      userInformation={this.state.userInformation}
-      setUser={this.setUser.bind(this)}/>
+      <div id="App">
+
+        <div>
+          <RoomList 
+          firebase={firebase}
+          activeRoom={this.state.activeRoom} 
+          activeRoomSelected={this.activeRoomSelected.bind(this)} />
+        </div>
+
+        <div id="App_messages">
+          <div>
+            <MessageList
+            firebase={firebase}
+            activeRoom={this.state.activeRoom} 
+            activeRoomSelected={this.activeRoomSelected.bind(this)}
+            userInformation={this.state.userInformation}
+            setUser={this.setUser.bind(this)}/>
+          </div>
+
+          <div>
+            {/* <User 
+            firebase={firebase}
+            userInformation={this.state.userInformation}
+            setUser={this.setUser.bind(this)}/> */}
+            <TextBox 
+            firebase={firebase}
+            activeRoom={this.state.activeRoom} 
+            activeRoomSelected={this.activeRoomSelected.bind(this)}
+            userInformation={this.state.userInformation}
+            setUser={this.setUser.bind(this)} />
+          </div>
+        </div>
       </div>
     );
   }

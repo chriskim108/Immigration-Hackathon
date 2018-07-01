@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class MessageList extends Component{
+class TextBox extends Component{
     constructor(props){
         super(props);
 
@@ -49,32 +49,26 @@ class MessageList extends Component{
         console.log("Filtered " + this.state.messages.length + " messages down to " + filteredMessages.length + " active messages.");
 
         return(
-            <div>
+            <div>                
+                {/* Form to input messages */}
+                <form onSubmit={ this.createMessage.bind(this) } >
+                    {/* <label className="newMessageLabel">Create a new message</label> */}
+                    
+                    <br/>
 
-                <h1>Created Messages</h1>
-                {
-                    filteredMessages.map( (data, index) => 
-                        <div key={index}>
-                            <h1>{data.content}</h1>    
+                    <input 
+                        type="text" 
+                        ref="messageOfRoom" 
+                        placeholder="Enter Message"/>
 
-                            <br/>
-                        
-                            <em>
-                                <strong>
-                                    {data.username}                             
-                                </strong>
-                            </em>
-
-                            {/* <button onClick={() => this.deleteMessage(data.key)}>
-                                Remove Message
-                            </button> */}
-                        </div>
-                    ) 
-                }
+                    <input 
+                        type="submit" 
+                        value="Send Message"/>
+                </form>
             </div>
         )
     }
 }
 
 
-export default MessageList;
+export default TextBox;
